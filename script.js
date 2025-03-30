@@ -1,9 +1,8 @@
-// Import Firebase modules from the official CDN
+// Import Firebase modules from CDN
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
 import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
-// Firebase configuration (from your provided setup)
+// Firebase configuration (ensure this matches Firebase console)
 const firebaseConfig = {
     apiKey: "AIzaSyDLWMMX_ymUqE5KT2lJvLHC4oPS7hv5-qQ",
     authDomain: "moo-game-27eb8.firebaseapp.com",
@@ -16,40 +15,18 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app); // Firestore database
+const db = getFirestore(app);
 
-// Reference to the form and data list
-const form = document.getElementById("dataForm");
-const dataList = document.getElementById("dataList");
-
-// Save data to Firestore when form is submitted
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-
+// Save data to Firestore
+async function saveData(name, email) {
     try {
-        await addDoc(collection(db, "users"), { name, email });
-        alert("Data Saved!");
-        form.reset();
-        fetchData(); // Refresh data list
+        const docRef = await addDoc(collection(db, "users"), { name, email });
+        console.log("Document written with ID: ", docRef.id);
+        alert("Data saved to Firestore!");
     } catch (error) {
-        console.error("Error adding document: ", error);
+        console.error("Error saving data: ", error);
     }
-});
-
-// Fetch and display stored data from Firestore
-async function fetchData() {
-    dataList.innerHTML = ""; // Clear list
-    const querySnapshot = await getDocs(collection(db, "users"));
-    querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        const listItem = document.createElement("li");
-        listItem.textContent = `${data.name} - ${data.email}`;
-        dataList.appendChild(listItem);
-    });
 }
 
-// Load data when the page opens
-fetchData();
+// Test data saving
+saveData("Test User", "test@example.com");
