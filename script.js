@@ -3,13 +3,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebas
 import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 
 // Firebase configuration (replace with your own config)
-const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+const firebaseConfig = {  
+    apiKey: "AIzaSyDLWMMX_ymUqE5KT2lJvLHC4oPS7hv5-qQ",
+    authDomain: "moo-game-27eb8.firebaseapp.com",
+    projectId: "moo-game-27eb8",
+    storageBucket: "moo-game-27eb8.firebasestorage.app",
+    messagingSenderId: "553878625015",
+    appId: "1:553878625015:web:07923b75fe1ebe017051f2",
+    measurementId: "G-XJF78NTD3G"
 };
 
 // Initialize Firebase
