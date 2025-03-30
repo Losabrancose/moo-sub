@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firebase Firestore Example</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Firebase Firestore Data Storage</h2>
-    
-    <form id="dataForm">
-        <input type="text" id="name" placeholder="Enter your name" required>
-        <input type="email" id="email" placeholder="Enter your email" required>
-        <button type="submit">Save Data</button>
+    <h1>Save User Data to Firestore</h1>
+
+    <!-- Form to input user data -->
+    <form id="userForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <button type="submit">Submit</button>
     </form>
 
-    <h3>Stored Data:</h3>
-    <ul id="dataList"></ul>
+    <h2>User List</h2>
+    <ul id="userList"></ul>
 
-    <script type="module" src="script.js"></script>
+    <!-- Import the Firebase SDK -->
+    <script type="module" src="app.js"></script>
 </body>
 </html>
